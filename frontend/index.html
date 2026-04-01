@@ -1,24 +1,72 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>AI Sudoku Solver</title>
+    <meta charset="UTF-8">
+    <title>Sudoku Solver</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h1>🧠 AI Sudoku Solver</h1>
+<h1>🧠 Sudoku Solver</h1>
 
 <div class="container">
     <div id="grid"></div>
 </div>
 
-<button onclick="solveSudoku()">✨ Solve</button>
-<button onclick="resetGrid()">🔄 Reset</button>
+<div class="btn-row">
+    <button onclick="analyzePuzzle()">🔍 Analyze</button>
+    <button onclick="solveSudoku()">✨ Solve</button>
+    <button onclick="solveAnimated()" class="btn-animate">▶ Watch It Solve</button>
+    <button onclick="resetGrid()" class="btn-reset">🔄 Reset</button>
+</div>
+
+<!-- Stats Panel -->
+<div id="statsPanel" class="stats-panel hidden">
+    <div class="stat-card">
+        <span class="stat-label">Difficulty</span>
+        <span id="statDifficulty" class="stat-value difficulty-badge">—</span>
+    </div>
+    <div class="stat-card">
+        <span class="stat-label">Given Cells</span>
+        <span id="statGiven" class="stat-value">—</span>
+    </div>
+    <div class="stat-card">
+        <span class="stat-label">Empty Cells</span>
+        <span id="statEmpty" class="stat-value">—</span>
+    </div>
+    <div class="stat-card">
+        <span class="stat-label">Backtracks</span>
+        <span id="statBacktracks" class="stat-value">—</span>
+    </div>
+    <div class="stat-card">
+        <span class="stat-label">Solve Steps</span>
+        <span id="statSteps" class="stat-value">—</span>
+    </div>
+    <div class="stat-card">
+        <span class="stat-label">Solve Time</span>
+        <span id="statTime" class="stat-value">—</span>
+    </div>
+</div>
+
+<!-- Speed control -->
+<div id="speedControl" class="speed-control hidden">
+    <label>Speed:</label>
+    <input type="range" id="speedSlider" min="1" max="5" value="3">
+    <span id="speedLabel">Fast</span>
+    <button onclick="stopAnimation()" class="btn-stop">⏹ Stop</button>
+</div>
+
+<!-- Progress bar -->
+<div id="progressWrap" class="progress-wrap hidden">
+    <div class="progress-bar-track">
+        <div id="progressBar" class="progress-bar"></div>
+    </div>
+    <span id="progressText">0%</span>
+</div>
 
 <h2>Solution</h2>
 <div id="solution"></div>
 
 <script src="script.js"></script>
-
 </body>
 </html>
